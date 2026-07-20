@@ -27,14 +27,14 @@ import sonho from './public/sonho.png'
 
 const products = [
   {
-    name: 'Misto c/ Pão de sal',
+    name: 'Misto c/ Pão francês',
     desc: 'Queijo, presunto, ovos ',
 
     bg: 'linear-gradient(160deg,#F7D57A,#F0BE4C)',
     icon: Psalgado,
   },
   {
-    name: 'Misto c/ pão massa fina ',
+    name: 'Misto c/ pão de forma ',
     desc: 'Queijo, presunto, ovos',
 
     bg: 'linear-gradient(160deg,#F7D57A,#F0BE4C)',
