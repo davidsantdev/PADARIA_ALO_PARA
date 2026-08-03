@@ -40,7 +40,7 @@ const cards = computed(() => [
       <div v-reveal="'left'">
         <div class="grid sm:grid-cols-2 gap-5">
           <div v-for="c in cards" :key="c.label" class="card-lift bg-white rounded-2xl p-6 border border-ink/5 shadow-sm">
-            <div class="w-10 h-10 rounded-full bg-orange/15 flex items-center justify-center mb-3">
+            <div class="w-10 h-10 rounded-full icon-badge flex items-center justify-center mb-3">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C97A2B" stroke-width="1.8">
                 <path stroke-linecap="round" stroke-linejoin="round" :d="c.icon" />
               </svg>
@@ -50,7 +50,7 @@ const cards = computed(() => [
           </div>
 
           <div class="card-lift bg-white rounded-2xl p-6 border border-ink/5 shadow-sm sm:col-span-2">
-            <div class="w-10 h-10 rounded-full bg-orange/15 flex items-center justify-center mb-3">
+            <div class="w-10 h-10 rounded-full icon-badge flex items-center justify-center mb-3">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C97A2B" stroke-width="1.8">
                 <circle cx="12" cy="12" r="9" />
                 <path stroke-linecap="round" d="M12 7v5l3 3" />

@@ -45,7 +45,14 @@ onBeforeUnmount(() => {
   >
     <div class="h-20 px-6 py-4 flex items-center justify-between">
       <router-link to="/" class="flex items-center gap-2" @click="closeMobile">
-        <img src="../public/Design sem nome.webp" class="w-[200px] pt-1" alt="Padaria Alô Pará" />
+        <img
+          src="../public/logo.webp"
+          class="h-9 sm:h-10 md:h-12 w-auto"
+          alt="Padaria Alô Pará"
+          width="720"
+          height="250"
+          fetchpriority="high"
+        />
       </router-link>
 
       <nav class="hidden md:flex items-center gap-8 text-sm">

@@ -114,7 +114,7 @@ box-shadow: 0 4px 12px rgba(156, 79, 38, 0.35), inset 0 1px 0 rgba(255,255,255,0
         v-reveal
         class="card-lift bg-white rounded-2xl p-6 shadow-[0_10px_30px_-18px_rgba(36,28,23,.25)] border border-ink/5"
       >
-        <div class="w-11 h-11 rounded-full bg-orange/15 flex items-center justify-center mb-4">
+        <div class="icon-badge w-11 h-11 rounded-full flex items-center justify-center mb-4">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C97A2B" stroke-width="1.8">
             <path stroke-linecap="round" stroke-linejoin="round" :d="f.icon" />
           </svg>
