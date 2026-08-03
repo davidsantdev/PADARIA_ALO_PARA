@@ -1,19 +1,18 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { useRoute } from 'vue-router'
 
 const scrolled = ref(false)
 const mobileOpen = ref(false)
-const activeSection = ref('home')
+const route = useRoute()
 
 const links = [
-  { label: 'Inicio', id: 'home' },
-  { label: 'Feitos na hora', id: 'sobre' },
-  { label: 'Cardápio', id: 'cardapio' },
-  { label: 'Galeria', id: 'galeria' },
-
+  { label: 'Início', to: '/' },
+  { label: 'Cardápio', to: '/cardapio' },
+  { label: 'Self-Service', to: '/self-service' },
+  { label: 'Galeria', to: '/galeria' },
+  { label: 'Sobre', to: '/sobre' },
 ]
-
-let observer = null
 
 function onScroll() {
   scrolled.value = window.scrollY > 20
@@ -23,44 +22,17 @@ function closeMobile() {
   mobileOpen.value = false
 }
 
-function scrollToSection(id) {
-  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-  closeMobile()
-}
-
-// Observa as seções da página e atualiza o link ativo no menu
-// conforme o usuário rola a tela (scrollspy).
-function setupObserver() {
-  const sections = links
-    .map((l) => document.getElementById(l.id))
-    .filter(Boolean)
-
-  observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          activeSection.value = entry.target.id
-        }
-      })
-    },
-    {
-      // considera "ativa" a seção que ocupa a faixa central da viewport
-      rootMargin: '-40% 0px -55% 0px',
-      threshold: 0,
-    }
-  )
-
-  sections.forEach((section) => observer.observe(section))
+function isActive(to) {
+  return to === '/' ? route.path === '/' : route.path.startsWith(to)
 }
 
 onMounted(() => {
+  onScroll()
   window.addEventListener('scroll', onScroll, { passive: true })
-  setupObserver()
 })
 
 onBeforeUnmount(() => {
   window.removeEventListener('scroll', onScroll)
-  observer?.disconnect()
 })
 </script>
 
@@ -68,38 +40,35 @@ onBeforeUnmount(() => {
   <header
     :class="[
       'fixed top-0 inset-x-0 z-50 transition-all duration-300',
-      scrolled ? 'bg-cream/80 backdrop-blur-lg shadow-sm' : 'bg-transparent',
+      scrolled || mobileOpen ? 'bg-cream/80 backdrop-blur-lg shadow-sm' : 'bg-transparent',
     ]"
   >
     <div class="h-20 px-6 py-4 flex items-center justify-between">
-      <div class="flex items-center gap-2">
-        <img src="../public/Design sem nome.png" class="w-[200px] pt-1" alt="Padaria Alô Pará" />
-
-      </div>
+      <router-link to="/" class="flex items-center gap-2" @click="closeMobile">
+        <img src="../public/Design sem nome.webp" class="w-[200px] pt-1" alt="Padaria Alô Pará" />
+      </router-link>
 
       <nav class="hidden md:flex items-center gap-8 text-sm">
-        <a
+        <router-link
           v-for="l in links"
-          :key="l.id"
-          :href="`#${l.id}`"
-          @click.prevent="scrollToSection(l.id)"
+          :key="l.to"
+          :to="l.to"
           :class="[
             'underline-grow transition-colors',
-            activeSection === l.id ? 'text-orange font-medium' : 'text-ink/80 hover:text-ink',
+            isActive(l.to) ? 'text-orange font-medium' : 'text-ink/80 hover:text-ink',
           ]"
         >
           {{ l.label }}
-        </a>
+        </router-link>
       </nav>
 
       <div class="hidden md:block">
-        <a
-          href="#cardapio"
-          @click.prevent="scrollToSection('cardapio')"
+        <router-link
+          to="/cardapio"
           class="btn-shine bg-orange text-ink text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-orangeD hover:text-cream transition-colors"
         >
           Ver Cardápio
-        </a>
+        </router-link>
       </div>
 
       <button class="md:hidden" @click="mobileOpen = !mobileOpen" aria-label="Abrir menu">
@@ -112,22 +81,29 @@ onBeforeUnmount(() => {
 
     <transition name="mobile-menu">
       <div v-if="mobileOpen" class="md:hidden bg-cream border-t border-ink/10 px-6 py-4 flex flex-col gap-4">
-        <a
+        <router-link
           v-for="l in links"
-          :key="l.id"
-          :href="`#${l.id}`"
-          @click.prevent="scrollToSection(l.id)"
-          :class="activeSection === l.id ? 'text-orange font-medium' : 'text-ink/80'"
+          :key="l.to"
+          :to="l.to"
+          @click="closeMobile"
+          :class="isActive(l.to) ? 'text-orange font-medium' : 'text-ink/80'"
         >
           {{ l.label }}
-        </a>
-        <a
-          href="#cardapio"
-          @click.prevent="scrollToSection('cardapio')"
+        </router-link>
+        <router-link
+          to="/contato"
+          @click="closeMobile"
+          :class="isActive('/contato') ? 'text-orange font-medium' : 'text-ink/80'"
+        >
+          Contato
+        </router-link>
+        <router-link
+          to="/cardapio"
+          @click="closeMobile"
           class="bg-orange text-ink text-sm font-semibold px-5 py-2.5 rounded-full w-fit"
         >
           Ver Cardápio
-        </a>
+        </router-link>
       </div>
     </transition>
   </header>

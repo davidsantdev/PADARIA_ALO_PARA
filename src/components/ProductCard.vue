@@ -16,6 +16,8 @@ defineProps({
         v-if="!isSvgMarkup(product.icon)"
         :src="product.icon"
         :alt="product.name"
+        loading="lazy"
+        decoding="async"
         class="icon-pop absolute inset-0 w-full h-full object-cover"
       />
       <!-- inline svg fallback -->
@@ -24,7 +26,7 @@ defineProps({
     <div class="p-5">
       <h3 class="font-display font-semibold text-lg">{{ product.name }}</h3>
       <p class="text-sm text-inkSoft mt-1 leading-relaxed">{{ product.desc }}</p>
-      <p class="text-orangeD font-semibold mt-3">{{ product.price }}</p>
+      <p v-if="product.price" class="text-orangeD font-semibold mt-3">{{ product.price }}</p>
     </div>
   </div>
 </template>

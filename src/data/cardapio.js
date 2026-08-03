@@ -1,0 +1,110 @@
+// Carrega automaticamente todas as imagens de src/public/cardapio/ (1.webp ... 85.webp)
+const cardapioImages = import.meta.glob('../public/cardapio/*.webp', { eager: true, import: 'default' })
+
+function getCardapioImg(n) {
+  return cardapioImages[`../public/cardapio/${n}.webp`] || ''
+}
+
+// nome + código de cada item, na mesma ordem numérica das imagens (1.webp a 85.webp)
+const cardapioRaw = [
+  'Bisc. Cebola|545',
+  'Bisc. Cookies|28',
+  'Bisc. Cupcakes|63035',
+  'Bisc. da Vovó|526',
+  'Bisc. Cocada|554',
+  'Bisc. Maizena|553',
+  'Bisc. Nhoque|553',
+  'Bisc. Olho de Boi|520',
+  'Bisc. Polvinho Trad.|82441',
+  'Bisc. Quebrador|123',
+  'Bolo de Milho|650',
+  'Bolo de Tapioca c/ Coco|638',
+  'Bolo Fatia|7058',
+  'Bolo Gelado|651',
+  'Bolo Gelado Red Velvet|7720',
+  'Bolo no Pote G|55776',
+  'Bolo no Pote P|102347',
+  'Bolo Pudim|76',
+  'Bolo Seco de Abacaxi|1517',
+  'Bolo Seco de Coco|578',
+  'Bolo Seco de Laranja|569',
+  'Bolo Seco de Macaxeira|1530',
+  'Bolo Seco de Milho|579',
+  'Bolo Seco Formigueiro|596',
+  'Bolo Seco Mesclado|600',
+  'Buffet|496',
+  'Café c/ Leite|5426',
+  'Café Simples|40102',
+  'Doce Sírio Mantecal|56',
+  'Farinha de Rosca|1230',
+  'Bisc. Donuts|42',
+  'Pudim Fatia|59336',
+  'Pão Sovado|5926',
+  'Suco Natural Abacaxi e Morango|25521',
+  'Suco Natural Laranja ou Maracujá|60686',
+  'Copo da Felicidade|65993',
+  'Mono Poção|56151',
+  'Bala Banana|59090',
+  'Combo|21010 + 64729',
+  'Bisc. Cueca Virada|520',
+  'Cápsulas 3 Corações|32649',
+  'Sonho|56151',
+  'Bix Mini Bolo|28670',
+  'Centro Salgado|51436',
+  'Pavê|102387',
+  'Fatia Húngara|704',
+  'Leite Líquido|12229',
+  'Massas de Queijo|498',
+  'Massas Doces Especiais|4039',
+  'Mousse c/ Biscoito|96164',
+  'Mousse Diversos|2499',
+  'Pão de Batata|879',
+  'Pão de Milho|701',
+  'Pão de Queijo|508',
+  'Pão Francês Gratinado|871',
+  'Pão Francês Trad.|500',
+  'Pão de Hambúrguer|506',
+  'Pão Hot-Dog|715',
+  'Pão Massa Fina|504',
+  'Pizza Tradicional|9144',
+  'Pudim Inteiro|721',
+  'Pudim P|55778',
+  'Quindim|722',
+  'Rocambole Doce|723',
+  'Rosca Doce|519',
+  'Salada de Frutas|3894',
+  'Sanduíche Natural|743',
+  'Suco de Laranja|60686',
+  'Suspiro Caseiro|753',
+  'Taça da Felicidade|72221',
+  'Torrada Trad.|755',
+  'Torta Conf. Abacaxi|119',
+  'Torta Conf. Bombom|605',
+  'Torta Conf. Chocolate Amargo/Branco|624',
+  'Torta Conf. Doce de Leite|633',
+  'Torta Conf. Lacta Cremosa|632',
+  'Torta Conf. Marta Rocha|619',
+  'Torta Conf. Morango|612',
+  'Torta Conf. Ninho|603',
+  'Torta Conf. Nutella|625',
+  'Torta Conf. Prestígio|78',
+  'Torta Conf. Sonho de Valsa|611',
+  'Amanhecido|275',
+  'Bisc. Brownie|611',
+  'Bisc. Casadinho|523',
+]
+
+export const cardapioItems = cardapioRaw.map((entry, i) => {
+  const [name, code] = entry.split('|')
+  const n = i + 1
+  return {
+    id: n,
+    name,
+    code,
+    img: getCardapioImg(n),
+  }
+})
+
+export function cardapioItemById(id) {
+  return cardapioItems.find((item) => item.id === id)
+}
