@@ -31,6 +31,7 @@ const cards = computed(() => [
 </script>
 
 <template>
+  <div>
   <PageHero kicker="Fale com a gente" subtitle="Dúvidas, encomendas ou sugestões — estamos por aqui.">
     <span class="italic text-orange">Contato</span>
   </PageHero>
@@ -100,4 +101,5 @@ const cards = computed(() => [
       </div>
     </div>
   </section>
+  </div>
 </template>

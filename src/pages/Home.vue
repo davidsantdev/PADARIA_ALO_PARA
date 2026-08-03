@@ -51,6 +51,7 @@ const explore = [
 </script>
 
 <template>
+  <div>
   <!-- HERO -->
   <section class="relative pt-32 pb-20 px-6 overflow-hidden grain">
     <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
@@ -209,4 +210,5 @@ box-shadow: 0 4px 12px rgba(156, 79, 38, 0.35), inset 0 1px 0 rgba(255,255,255,0
       </div>
     </div>
   </section>
+  </div>
 </template>

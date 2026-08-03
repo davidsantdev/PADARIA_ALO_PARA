@@ -48,6 +48,7 @@ const visiblePages = computed(() => {
 </script>
 
 <template>
+  <div>
   <PageHero kicker="Cardápio completo" subtitle="Mais de 80 opções entre pães, salgados, bolos e doces feitos frescos todos os dias.">
     Nosso <span class="italic text-orange">Cardápio</span>
   </PageHero>
@@ -144,4 +145,5 @@ const visiblePages = computed(() => {
       </div>
     </div>
   </section>
+  </div>
 </template>

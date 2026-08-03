@@ -5,6 +5,7 @@ import { selfServiceItems, selfServicePrice } from '../data/selfService'
 </script>
 
 <template>
+  <div>
   <PageHero kicker="Monte o seu prato" subtitle="Salgados e bolos fresquinhos, pesados na hora — você escolhe a combinação.">
     <span class="italic text-orange">Self-Service</span>
   </PageHero>
@@ -58,4 +59,5 @@ import { selfServiceItems, selfServicePrice } from '../data/selfService'
       </div>
     </div>
   </section>
+  </div>
 </template>

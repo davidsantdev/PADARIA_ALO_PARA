@@ -7,6 +7,7 @@ import { featured, mosaic } from '../data/gallery'
 </script>
 
 <template>
+  <div>
   <PageHero kicker="Bastidores" subtitle="Um pouco do processo — e do resultado — por trás de cada fornada.">
     Nossa <span class="italic text-orange">Galeria</span>
   </PageHero>
@@ -110,4 +111,5 @@ import { featured, mosaic } from '../data/gallery'
       </div>
     </div>
   </section>
+  </div>
 </template>

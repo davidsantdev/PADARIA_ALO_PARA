@@ -20,6 +20,7 @@ const timeline = [
 </script>
 
 <template>
+  <div>
   <PageHero kicker="Nossa história" subtitle="Paciência, sabor e nutrição em cada fornada.">
     Filosofia da <span class="italic text-orange">Massa</span>
   </PageHero>
@@ -96,4 +97,5 @@ const timeline = [
       </router-link>
     </div>
   </section>
+  </div>
 </template>
