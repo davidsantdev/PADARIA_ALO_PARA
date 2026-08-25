@@ -1,5 +1,7 @@
 // TODO: substitua pelos dados reais da padaria antes de publicar o site.
 // `whatsapp` deve conter apenas dígitos, no formato DDI+DDD+número (ex: 5583999999999).
+// `mapsUrl` e `instagram`: cole o link completo (ex: https://maps.app.goo.gl/...,
+// https://instagram.com/seuperfil) — ficam ocultos no site enquanto vazios.
 export const contact = {
   whatsapp: '',
   whatsappDisplay: '(00) 00000-0000',

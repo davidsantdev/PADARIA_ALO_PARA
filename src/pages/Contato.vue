@@ -15,16 +15,19 @@ const cards = computed(() => [
   {
     label: 'WhatsApp',
     value: contact.whatsappDisplay,
+    link: whatsappLink(),
     icon: 'M12 3a9 9 0 0 0-7.79 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3Z',
   },
   {
     label: 'Endereço',
     value: contact.address,
+    link: contact.mapsUrl || null,
     icon: 'M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11Zm0-8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z',
   },
   {
     label: 'E-mail',
     value: contact.email,
+    link: `mailto:${contact.email}`,
     icon: 'M3 6h18v12H3V6Zm0 0 9 7 9-7',
   },
 ])
@@ -40,7 +43,16 @@ const cards = computed(() => [
     <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
       <div v-reveal="'left'">
         <div class="grid sm:grid-cols-2 gap-5">
-          <div v-for="c in cards" :key="c.label" class="card-lift bg-white rounded-2xl p-6 border border-ink/5 shadow-sm">
+          <component
+            :is="c.link ? 'a' : 'div'"
+            v-for="c in cards"
+            :key="c.label"
+            :href="c.link || undefined"
+            :target="c.link && c.link.startsWith('http') ? '_blank' : undefined"
+            rel="noopener"
+            class="card-lift bg-white rounded-2xl p-6 border border-ink/5 shadow-sm"
+            :class="c.link ? 'block hover:border-orange/40' : ''"
+          >
             <div class="w-10 h-10 rounded-full icon-badge flex items-center justify-center mb-3">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C97A2B" stroke-width="1.8">
                 <path stroke-linecap="round" stroke-linejoin="round" :d="c.icon" />
@@ -48,7 +60,7 @@ const cards = computed(() => [
             </div>
             <p class="text-xs uppercase tracking-widest text-inkSoft">{{ c.label }}</p>
             <p class="font-semibold mt-1">{{ c.value }}</p>
-          </div>
+          </component>
 
           <div class="card-lift bg-white rounded-2xl p-6 border border-ink/5 shadow-sm sm:col-span-2">
             <div class="w-10 h-10 rounded-full icon-badge flex items-center justify-center mb-3">

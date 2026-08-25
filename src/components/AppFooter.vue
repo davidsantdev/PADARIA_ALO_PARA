@@ -24,6 +24,32 @@ const links = [
           Pães, salgados e bolos feitos do zero, todos os dias. Ingredientes honestos e o carinho
           de sempre.
         </p>
+
+        <div class="mt-5 flex items-center gap-3">
+          <a
+            v-if="contact.instagram"
+            :href="contact.instagram"
+            target="_blank"
+            rel="noopener"
+            aria-label="Instagram"
+            class="w-9 h-9 rounded-full border border-cream/15 flex items-center justify-center hover:border-orange hover:text-orange transition-colors"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <rect x="3" y="3" width="18" height="18" rx="5" />
+              <circle cx="12" cy="12" r="4" />
+              <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+            </svg>
+          </a>
+          <a
+            :href="`mailto:${contact.email}`"
+            aria-label="E-mail"
+            class="w-9 h-9 rounded-full border border-cream/15 flex items-center justify-center hover:border-orange hover:text-orange transition-colors"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 6h18v12H3V6Zm0 0 9 7 9-7" />
+            </svg>
+          </a>
+        </div>
       </div>
 
       <div>
@@ -45,7 +71,16 @@ const links = [
             <span>{{ h.time }}</span>
           </li>
         </ul>
-        <p class="mt-4 text-sm text-cream/60">{{ contact.address }}</p>
+        <a
+          v-if="contact.mapsUrl"
+          :href="contact.mapsUrl"
+          target="_blank"
+          rel="noopener"
+          class="mt-4 text-sm text-cream/60 hover:text-orange transition-colors block"
+        >
+          {{ contact.address }}
+        </a>
+        <p v-else class="mt-4 text-sm text-cream/60">{{ contact.address }}</p>
       </div>
     </div>
 
