@@ -6,7 +6,7 @@ export const contact = {
   address: 'Endereço a confirmar',
   mapsUrl: '',
   instagram: '',
-  email: 'contato@alopara.com.br',
+  email: 'contato@aloparapadaria.com.br',
   hours: [
     { day: 'Segunda a Sábado', time: '06:00 – 20:00' },
     { day: 'Domingo', time: '06:00 – 12:00' },

@@ -1,6 +1,5 @@
 <script setup>
 import { vReveal } from '../directives/reveal'
-import { isSvgMarkup } from '../utils/media'
 import ProductCard from '../components/ProductCard.vue'
 import PageHeading from '../components/PageHeading.vue'
 import boloImg from '../public/bolo.webp'
