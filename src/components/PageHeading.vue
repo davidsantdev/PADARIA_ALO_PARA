@@ -10,10 +10,10 @@ defineProps({
 
 <template>
   <div v-reveal :class="center ? 'text-center' : ''">
-    <p v-if="kicker" class="text-xs tracking-widest uppercase text-orangeD font-semibold mb-3">
+    <p v-if="kicker" class="text-xs tracking-widest uppercase text-bronze font-bold mb-3">
       {{ kicker }}
     </p>
-    <h2 class="font-display text-3xl md:text-4xl font-semibold leading-tight">
+    <h2 class="h-display text-4xl md:text-6xl">
       <slot />
     </h2>
     <p

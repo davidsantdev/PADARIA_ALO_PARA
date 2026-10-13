@@ -24,7 +24,7 @@ export const products = [
   },
   {
     name: 'Crepioca de frango e catupiry / Crepioca de presunto e queijo',
-    desc: 'Uma delicia para seu dia e ótimo para sua dieta',
+    desc: 'Uma delícia para o seu dia e ótima para a sua dieta',
     bg: 'linear-gradient(160deg,#F7D57A,#F0BE4C)',
     icon: crepiocaImg,
   },
